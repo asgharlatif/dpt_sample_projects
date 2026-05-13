@@ -1,0 +1,26 @@
+
+version: 2
+
+sources:
+  - name: raw_sources_1
+    schema: public
+    database: practice
+    description: "practice database staging schema customers table"
+    tables:
+      - name: friends
+      - name: activities
+
+models:
+  - name: exclude_min_max
+    description: "exclude_min_max"
+    columns:
+      - name: activity        
+        description: "activity"
+        data_tests:
+          - unique
+          - not_null
+    config:
+      materialized: table
+      alias: exclude_min_max_activity
+
+  
