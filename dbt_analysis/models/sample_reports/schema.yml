@@ -55,4 +55,21 @@ models:
       materialized: view
       alias: view_movie_ratings 
 
-  
+  - name: restaurant_sales_analysis
+    description: '{{ doc("restaurant_sales_analysis") }}'
+    columns:
+      - name: visited_on        
+        description: "visited_on"
+        data_tests:
+          - unique
+          - not_null
+    config:
+      materialized: view
+      alias: view_restaurant_sales_analysis
+
+  - name: players_score_analysis
+    description: '{{ doc("players_score_analysis") }}'
+          
+    config:
+      materialized: view
+      alias: view_players_score_analysis
