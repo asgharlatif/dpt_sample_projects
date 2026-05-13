@@ -8,7 +8,6 @@ sources:
     description: "practice database staging schema customers table"
     tables:
       - name: friends
-      - name: activities
 
 models:
   - name: exclude_min_max
@@ -19,8 +18,22 @@ models:
         data_tests:
           - unique
           - not_null
+          - test_is_activity_singing
+
     config:
-      materialized: table
-      alias: exclude_min_max_activity
+      materialized: view
+      alias: view_exclude_min_max_activity
+
+  - name: report_all_students_in_department
+    description: "report_all_students_in_department"
+    columns:
+      - name: dept_name        
+        description: "dept_name"
+        data_tests:
+          - unique
+          - not_null
+    config:
+      materialized: view
+      alias: view_report_all_students_in_department      
 
   
