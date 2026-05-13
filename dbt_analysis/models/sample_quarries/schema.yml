@@ -5,13 +5,13 @@ sources:
   - name: raw_sources_1
     schema: public
     database: practice
-    description: "practice database staging schema customers table"
+    description: 'List of all the raw sources'
     tables:
       - name: friends
 
 models:
   - name: exclude_min_max
-    description: "exclude_min_max"
+    description: '{{ doc("activities_events_1") }}'
     tests:
     - dbt_utils.expression_is_true:
        arguments:
@@ -41,5 +41,18 @@ models:
     config:
       materialized: view
       alias: view_report_all_students_in_department      
+
+
+  - name: movie_ratings
+    description: '{{ doc("movie_ratings") }}'
+    columns:
+      - name: moviename        
+        description: "moviename"
+        data_tests:
+          - unique
+          - not_null
+    config:
+      materialized: view
+      alias: view_movie_ratings 
 
   
