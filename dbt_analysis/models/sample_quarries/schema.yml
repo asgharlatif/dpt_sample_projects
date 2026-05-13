@@ -12,6 +12,11 @@ sources:
 models:
   - name: exclude_min_max
     description: "exclude_min_max"
+    tests:
+    - dbt_utils.expression_is_true:
+       arguments:
+        expression: "2+2 = 4"
+
     columns:
       - name: activity        
         description: "activity"
@@ -19,6 +24,7 @@ models:
           - unique
           - not_null
           - test_is_activity_singing
+
 
     config:
       materialized: view
